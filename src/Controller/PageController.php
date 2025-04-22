@@ -1,28 +1,37 @@
 <?php
 
-// Défini le chemin de ce fichier
-// Obligatoire, doit représenter exactement le chemin du fichier en remplaçant le dossier "src" par "App"
+// définir le chemin de ce fichier
+// obligatoire, doit représenter exactement le chemin du fichier
+// en remplaçant le dosser "src" par "App"
 namespace App\Controller;
 
-// Remplace le require
-// On indique ici le namespace de la classe qu'on veut utiliser et Symfony + composer font le require automatiquement
+// remplace le require
+// on indique ici le namespace de la classe qu'on veut utiliser
+// et symfony + composer feront le require automatiquement
 
-use Symfony\Component\BrowserKit\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-// Création d'une classe "PageController"
-class PageController {
-    
-    #[Route("/", name: "home")]
+// J'utilise extends AbstractController
+// pour pouvoir utiliser des fonctionnalités que symfony
+// me donnent pour gérer plus facilement les controleurs
+// parmi ces fonctionnalités : celle d'utiliser Twig facilement
+class PageController extends AbstractController {
+
+
+	#[Route("/", name: "home")]
 	public function home() {
-		// j'utilise la classe Response de Symfony
-		// pour renvoyer une réponse HTTP, incluant HTML et un status HTTP 200
-		return new Response ("<p> coucou ca va bien ? </p>", 200);
+		// j'utilise la méthode render
+		// qui permet de récupérer un fichier de views twig
+		// de le transformer en HTML
+		// et de la renvoyer en response HTTP avec un status 200
+		return $this->render('base.html.twig');
 	}
 
 
+
 }
-  
 
 
 
