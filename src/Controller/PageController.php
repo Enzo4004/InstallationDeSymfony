@@ -26,7 +26,7 @@ class PageController extends AbstractController {
 		// qui permet de récupérer un fichier de views twig
 		// de le transformer en HTML
 		// et de la renvoyer en response HTTP avec un status 200
-		return $this->render('base.html.twig');
+		return $this->render('home.html.twig');
 	}
 
 
